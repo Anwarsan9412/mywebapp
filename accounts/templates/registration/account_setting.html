@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Profile
+{% endblock page_title %}   
+
+{% block contents %}
+
+
+
+  <br>
+  <div class="row">
+      <div class="col-md-3">
+          <div class="card card-body ">
+
+            <a href="{% url 'home' %}" class="btn btn-warning">&#8592; Back to Home</a>
+            <hr>
+            <h3 style="text-align: center;">Account Setting</h3>
+            <hr>
+            <img src=" {{request.user.profile.profile_pic.url}} " class="profil_pic" alt="">
+          </div>
+      </div>
+
+      
+      <div class="col-md-9">
+          <div class="card card-body">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- {% if messages %}
+                {% for message in messages %}
+                    
+                    <div class="alert alert-success is-hidden">{{ message }}</div>
+                {% endfor %}
+            {% endif %} -->
+
+                {{form.as_p}}
+
+                <button class="btn btn-primary mt-2 " type="submit">Update Profile</button>
+            
+                    
+
+            </form>
+          </div>
+      </div>
+
+  </div>
+
+
+
+{% endblock contents %}<br>

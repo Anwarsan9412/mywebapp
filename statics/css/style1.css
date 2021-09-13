@@ -1,0 +1,45 @@
+#logo{
+
+}
+body{
+    background-color:#ebeff5;
+}
+
+#total-tabungan{
+    background-color: #4cb4c7;
+}
+
+#total-pinjaman{
+    background-color: #7abecc;
+}
+
+#tabungan{
+    background-color: #7CD1C0;
+}
+
+#sisa-tabungan{
+    background-color:#28FFBF;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: block;
+}
+li {
+    display: inline;
+}
+
+.profile_pic{
+    max-width: 200px;
+    max-height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.col-sm.sticky-top {
+    align-self: flex-start;
+  }
+

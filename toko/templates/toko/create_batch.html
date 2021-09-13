@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Appweb | Create Batch
+{% endblock page_title %}
+
+{% block contents %}
+
+<div class="card mt-4">
+  <form action="" method="POST">
+    {% csrf_token %}
+   
+<div class="row mt-2 ml-1 mr-1">
+  <div class="col-sm-3">
+    <div class="card border-0">
+      <div class="card-body mb-2">
+        <h5 class="card-title"><div>{{form.action.label_tag}}</div></h5>
+         {% for component in form.action %}
+             <div class="form-check">
+                {{ component.tag}}
+              <label for="{{component.id_for_label}}" class="from-check-label">
+                 {{component.choice_label }}
+               </label>
+              </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2 mb-3">
+    <div class="card border-0">
+      <div class="card-body">       
+        <div class="form-group">
+          <h5 class="card-title">{{form.cabang.label_tag}}</h5>
+          {{form.cabang}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm ">
+    <div class="card border-0">
+      <div class="card-body">       
+        <div class="form-group">
+          <h5 class="card-title">Password</h5>
+          {{form.passtoko}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+<div class="row ml-1 mr-1">
+  <div class="col-sm-5">
+      <div class="card-body">       
+        <div class="form-group">
+          <div class="form-group">
+            <h5 class="card-title">{{form.kdtk.label_tag}}</h5>           
+            <div class="form-row">
+                {{form.kdtk}}
+            </div>
+        </div>
+        </div>
+      </div>
+  
+  </div>
+  <div class="col-sm">
+    <div class="card-body">       
+      <div class="form-group">
+        <h5 class="card-title">{{form.query.label_tag}}</h5>  
+        <div class="form-row">
+            {{form.query}}
+        </div>
+    </div>
+    </div>
+
+</div>
+</div>
+
+<div class="row ml-1 mr-1">
+  <div class="col-sm-6 mb-3">
+      <div class="card-body mb-2">       
+        <div class="form-group">
+          <h5 class="card-title">{{form.nama_file.label_tag}}</h5>           
+          {{form.nama_file}}
+      </div>
+      </div>
+  </div>
+  <div class="col-sm mb-3">
+    <div class="card-body">       
+      <div class="form-group">
+        <h5 class="card-title"></h5>     
+        <br>      
+        <button class="btn btn-success btn-lg btn-block " type="submit" style="margin: .375rem; padding: .84rem 2.14rem;">Create Batch</button>
+    </div>
+    </div>
+</div>
+</div>
+
+</form>
+</div>
+
+{% endblock contents %}

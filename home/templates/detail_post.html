@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Appweb | Detail Post
+{% endblock page_title %}
+
+{% block contents %}
+
+<br>
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="folat-left mb-4">
+            <a href="{% url 'home' %}" class="btn btn-warning">&#8592; Back to Home</a>
+        </div>
+        
+      <h4 class="card-title"><img  class="rounded-circle" alt="Cinque Terre" width="60" height="60" src=" {{object.author.profile_pic.url}} " alt="user image"><a>&nbsp{{object.author.first_name}}  {{object.author.last_name}} </a>
+      </h4>
+      <div class="card-title ">
+              <small>Kategori : {{object.category}} </small><br>
+              <small>Published : {{object.is_published}} | {{object.update}} </small>
+       </div>
+       
+
+      <h4 class="card-title"><a href="{% url 'detail-post' object.slug %}"> {{object.judul}} </a> </h4>
+
+      <p class="card-text"> {{object.body|safe}} </p>
+      <small>
+        {% if user.is_authenticated %} 
+        {% if user.id == object.username.id %}
+        <a href="{% url 'update-post' object.slug %}">[Edit]</a>
+        <a href="{% url 'delete-post' object.slug %}">[Delete]</a>
+        {% endif %}
+        {% endif %}
+      </small>
+
+      <form action="{% url 'like_post' object.slug %}" method="post">
+        {% csrf_token %}
+        {% if liked %}
+        <div class="float-right"><button type="submit" class="btn btn-danger btn-sm" name="post_id" value=" {{object.id}} " ><i class="far fa-thumbs-down mr-1"></i> Unlike</button> - {{total_likes}} Likes </div>
+        {% else %}
+        <div class="float-right"> <button type="submit" class="btn btn-primary btn-sm text-sm ml-2 mr-2" name="post_id" value=" {{object.id}} " ><i class="far fa-thumbs-up mr-1"></i> Like</button>- {{total_likes}} Likes</div>
+        
+        {% endif %}
+      <!-- <div class="float-right">- {{total_likes}} Likes</div> -->
+      </form>
+      
+    </div>
+  </div>
+
+    
+
+{% endblock contents %}

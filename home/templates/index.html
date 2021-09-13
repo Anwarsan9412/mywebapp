@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Appweb | home
+{% endblock page_title %}
+
+{% block contents %}
+<br>
+<div>
+  <i  class="fa fa-arrow-circle-up" onclick="scrollUp(0,-50000)" style="opacity: 0.6; position: fixed; bottom:15em; left:3em;"></i>
+</div>
+
+
+<div class="row">
+  <div class="col ">
+      <div class="card card-body">
+          <form action="" method="get">
+              {{myFilter.form}}
+              <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+      </div>
+  </div>
+</div>
+
+    <div class="row">
+      
+      <div class="col-md-8">
+        {% for pos in all %}
+        
+        <div class="card mt-2">
+          <div class="card-body">
+            <h4 class="card-title"><img  class="rounded-circle" alt="Cinque Terre" width="60" height="60" src=" {{pos.author.profile_pic.url}} " alt="user image"><a>&nbsp{{pos.author.first_name}}  {{pos.author.last_name}}</a>
+            </h4>
+
+           <div class="card-title mb-0 ">
+              <small>Kategori : {{pos.category}} </small><br>
+              <small>Published : {{pos.is_published}} | {{pos.update}} </small>
+            </div>
+            <hr style="opacity: 0.9; margin-top: 0.5rem;"> 
+
+            <h4 class="card-title"><a href="{% url 'detail-post' pos.slug %}"> {{pos.judul}} </a> </h4>
+ 
+            <p class="card-text"> {{pos.body|truncatewords_html:20|safe}}  <a style="text-decoration:none" href="{% url 'detail-post' pos.slug %}">... Selengkapnya</a> </p>
+            <small>
+              {% if user.is_authenticated %} 
+              {% if user.id == pos.username.id %}
+              <a href="{% url 'update-post' pos.slug %}">[Edit]</a>
+              <a href="{% url 'delete-post' pos.slug %}">[Delete]</a>
+              {% endif %}
+              {% endif %}
+            </small>
+              <p> {{total_likes}} </p>            
+          </div>
+        </div>
+
+          {% endfor %}         
+          
+      </div>
+    
+      
+      <div class="col-sm sticky-top " >
+        <div class="card mt-2" >
+          <div class="card-body" >
+            <h3 >Kategori</h3>
+            <ul class="list-group list-group-flush">
+              {% for categories in category %}
+                <li class="list-group-item">
+                    <a href="{% url 'category' categories.pk  %}">{{categories.category}}</a> 
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+            </div>
+        </div>
+      </div>
+  
+
+
+
+</div>
+    
+
+{% include "snippets/footer.html" %}
+<br><br>
+
+   <script>
+     
+        function scrollUp(x,y) {
+            window.scrollBy(x, y);
+            }
+    </script>
+
+{% endblock contents %}

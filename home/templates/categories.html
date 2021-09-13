@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+    Appweb | Category
+{% endblock page_title %}
+    
+
+{% block contents %}
+
+{% if user.is_authenticated %}
+
+<br>
+{% for cate in cat %}
+<div class="card mt-2">
+    <div class="card-body">
+       
+      <h4 class="card-title"><img  class="rounded-circle" alt="Cinque Terre" width="60" height="60" src=" {{cate.author.profile_pic.url}} " alt="user image"><a>&nbsp{{cate.author.first_name}}  {{cate.author.last_name}} </a>
+      </h4>
+      <div class="card-title ">
+              <small>Kategori : {{cate.category}} </small><br>
+              <small>Published : {{cate.is_published}} | {{cate.update}} </small>
+            </div>
+
+      <h4 class="card-title"><a href="{% url 'detail-post' cate.slug %}"> {{cate.judul}} </a> </h4>
+
+      <p class="card-text"> {{cate.body|safe}} </p>
+
+      <!-- {{cate.username_id}}
+      {{user.id}}
+      <small>
+        {% if user.is_authenticated %} 
+        {% if user.id == username.id %}
+        <a href="{% url 'update-post' object.slug %}">[Edit]</a>
+        <a href="{% url 'delete-post' object.slug %}">[Delete]</a>
+        {% endif %}
+        {% endif %}
+      </small> -->
+
+     
+    </div>
+  </div>
+{% endfor %}
+
+
+{% else %}
+<h3>You're not allowed !!</h3>
+{% endif %}
+
+
+
+
+       
+{% endblock contents %}
+    

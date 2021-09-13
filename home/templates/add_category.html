@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Appweb | Add Category
+{% endblock page_title %}
+
+{% block contents %}
+
+<br>
+<div class="row">
+    
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 style="text-align: center;">Add Category</h3>
+            <hr>
+            <form action="" method="post">
+                {% csrf_token %}
+                    {{ form.media}}
+                    {{ form.as_p}}
+                    <button class="btn btn-success mt-2 mb-2" type="submit">Add Category</button>
+
+            </form>  
+                    
+          </div>
+    </div>
+
+
+    <div class="col-sm">
+        <div class="card" >
+          <div class="card-body" >
+            <h3 >List Category</h3>
+            <ul class="list-group list-group-flush">
+                {% for cat in category %}
+                <li class="list-group-item">
+                   <a href="{% url 'category' cat.id %}">{{cat}}</a>
+                </li>
+            {% endfor %}
+            </ul>
+            </div>
+        </div>
+      </div>
+  
+
+
+
+
+
+</div>
+    
+
+{% endblock contents %}

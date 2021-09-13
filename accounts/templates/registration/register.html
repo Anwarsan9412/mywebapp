@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+        {% block page_title %}
+            Register
+        {% endblock page_title %}
+
+    {% block contents %}
+
+        <br><br>
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card">
+                    <div class="d-flex justify-content-center">
+                        <h3>REGISTER ACCOUNT</h3>
+                    </div>
+                    <dev class="d-flex justify-content-center form_container">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                    </dev>
+
+                </div>
+            </div>
+        </div>
+        
+
+<br>
+
+<script>
+    // var name = "{{ group }}";
+    // document.getElementById("anwar").value = name;
+    var a = document.getElementById("id_group").value
+    document.getElementById("anwar").value = a
+    
+</script>
+
+
+    {% endblock contents %}

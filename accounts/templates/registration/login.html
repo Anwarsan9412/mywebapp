@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+        {% block page_title %}
+            Login
+        {% endblock page_title %}
+ 
+    {% block contents %}
+        <br>
+      
+      <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+              <div class="card card-primary" style="box-shadow: 0 2px 3px rgba(0,0,0,0.3); padding: 40px;">
+                <h5 class="card-title text-center mb-4">Login to your account</h5>
+                <form role="form" method="post">
+                  {% csrf_token %}
+
+                  
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input autofocus="true" type="text" name="username" class="form-control" id="username" required >
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="float-right"> <a style="text-decoration-line: none;" href="{% url 'reset_password' %}">Forgot Password</a></div>
+            <input type="password" name="password" class="form-control " id="password" required>
+          </div>
+
+          <div class="card mt-4">
+            <button type="submit" class="btn btn-primary" >Log In</button>
+          </div>
+          <br>
+          Not Registered? Sign Up <a href="{% url 'register' %}">Here</a>
+
+                </form>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+
+       
+
+        
+    {% endblock contents %}

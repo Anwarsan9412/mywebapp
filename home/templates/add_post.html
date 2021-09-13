@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Appweb | Add Post
+{% endblock page_title %}
+
+{% block contents %}
+
+
+    
+<div class="card-body">
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <h1>Add Post</h1>
+            <br>
+            {{ form.media}}
+            {{ form.as_p}}
+            <button class="btn btn-success btn-sm" type="submit">Add Post</button>
+        </div>
+       
+    </form>
+</div>
+
+{% endblock contents %}

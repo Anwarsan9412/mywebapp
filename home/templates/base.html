@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block page_title %}
+          
+        {% endblock page_title %}
+    </title>
+    {% include "snippets/styles.html" %}
+
+</head>
+<body>
+    {% include "snippets/navbar.html" %} 
+
+    <div class="container" >
+
+        
+                  
+
+        {% block contents %}
+
+
+                  
+        {% endblock contents %}
+    </div>
+    
+    {% include "snippets/scripts.html" %}
+
+    {% if messages %}
+                {% for m in messages %}
+
+                
+                {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <script>
+                    console.log("{{m}}")
+                    Swal.fire({
+                    position: 'top-center',
+                    icon: 'error',
+                    title: 'Wrong username or password',
+                    "text":"{{m}}",
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                    </script>
+                    {% else %}
+                    <script>
+                        console.log("{{m}}")
+                        Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        "text":"{{m}}",
+                        showConfirmButton: false,
+                        timer: 1500
+                        })
+                        
+                    </script>
+                {% endif %}
+                    
+
+                
+
+
+                    
+                    
+                    
+                {% endfor %}
+    
+        {% endif %}
+
+        
+            
+
+
+</body>
+</html>
